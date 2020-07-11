@@ -8,17 +8,13 @@ export default function Home() {
       <Layout>
         <div class="nav">
             <p>Home</p>
-            <p>About</p>
             <p>Check Stores</p>
             <p>Covid Safety Tips</p>
-        </div>
-        <div class="about">
-          <h2>About COVID Wait</h2>
         </div>
         <div class="Check Stores">
           <h2>Check Nearby Stores</h2>
           <form>
-            <input type="text" placeholder="Enter Location"></input>
+            <input id="location" type="text" placeholder="Enter Location" ></input>
           </form>
         </div>
       </Layout>

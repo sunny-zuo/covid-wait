@@ -2,3 +2,9 @@
     display: flex;
     justify-content: space-around;
 }
+h2 {
+    text-align: center;
+}
+#location {
+    width: 100;
+}
