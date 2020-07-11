@@ -28,5 +28,7 @@ input {
 }
 #current-location {
     display: flexbox;
-    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0, auto;
 }
