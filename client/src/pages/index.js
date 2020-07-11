@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout"
+import "../stylesheets/index.css"
 
 class Home extends React.Component {
   componentDidMount() {
@@ -15,6 +16,13 @@ class Home extends React.Component {
     return (
       <div>
         <Layout>
+          <div class="nav">
+            <p>Home</p>
+            <p>Check Stores</p>
+            <p>Covid Safety Tips</p>
+          </div>
+          <div class="Check Stores">
+          <h2>Check Nearby Stores</h2>
           <h3>Find the least crowded, and safest grocery stores (or other place types) in your area. Updated in real time.</h3>
           <form>
             <input type="text" name="address" aria-label="User Address" placeholder="Enter Your Address"></input>
@@ -30,6 +38,7 @@ class Home extends React.Component {
 
           <br/>
           <button onClick={getLocation}>Click here to use your current location</button>
+    </div>
         </Layout>
       </div>
     )
