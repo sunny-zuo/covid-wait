@@ -15,6 +15,7 @@ import requests
 
 apiKey = os.getenv("APIKEY")
 
+geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + apiKey
 searchURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
 
 @app.route('/', methods=['GET'])
@@ -29,6 +30,17 @@ def convert_address():
 
     if 'address' in request.args:
         address = request.args.get('address')
+
+        payload = {
+            'address': address
+        }
+
+        geocoded = request.get(geocodeURL, params=payload)
+
+        geocodedLocation = geocoded.json()['results'][0]['geometry']['location']
+
+        latitude = geocodedLocation['lat']
+        longitude = geocodedLocation['lng']
 
         app.logger.info("Received address request for %s and returned %s results with status %s (%s)", address, len(results), statusCode, status)
     else:
