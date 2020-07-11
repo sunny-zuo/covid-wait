@@ -27,7 +27,7 @@ class Home extends React.Component {
           <form>
             <input type="text" name="address" aria-label="User Address" placeholder="Enter Your Address"></input>
             <br/>
-            <label>Find:</label>
+            <label id="findPlaceType">Find:</label>
             <select id="placeType" name="placeType">
               <option value="supermarket">Supermarket</option>
               <option value="drugstore">Drug Store</option>
@@ -56,7 +56,7 @@ function getLocation() {
   }
 }
 
-function makeRequestCoords(position) {
+async function makeRequestCoords(position) {
   let response = await fetch('API_URL', {
     method: 'GET'
   })
@@ -68,7 +68,7 @@ function makeRequestCoords(position) {
   }
 }
 
-function makeRequestAddy() {
+async function makeRequestAddy() {
   let response = await fetch('API_URL', {
     method: 'GET'
   })
