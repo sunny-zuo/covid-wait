@@ -48,11 +48,27 @@ function getLocation() {
 }
 
 function makeRequestCoords(position) {
+  let response = await fetch('API_URL', {
+    method: 'GET'
+  })
 
+  if (response.status === 200) {
+    console.log(response.json());
+  } else {
+    console.log('error making request');
+  }
 }
 
 function makeRequestAddy() {
+  let response = await fetch('API_URL', {
+    method: 'GET'
+  })
 
+  if (response.status === 200) {
+    console.log(response.json());
+  } else {
+    console.log('error making request');
+  }
 }
 
 export default Home;
