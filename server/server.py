@@ -18,12 +18,45 @@ apiKey = os.getenv("APIKEY")
 geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + apiKey
 searchURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
 
+def geocoding(address):
+    payload = {
+        'address': address
+    }
+
+    geocoded = requests.get(geocodeURL, params=payload)
+
+    geocodedLocation = geocoded.json()['results'][0]['geometry']['location']
+
+    latitude = geocodedLocation['lat']
+    longitude = geocodedLocation['lng']
+
+    return str(latitude) + ',' + str(longitude)
+
+def listNearby(location):
+    results = []
+
+    payload = {
+        'location': location,
+        'rankby': 'distance'
+    }
+
+    if 'type' in request.args:
+        payload['type'] = request.args.get('type')
+
+    listPlaces = requests.get(searchURL, params=payload)
+
+    for place in listPlaces.json()['results']:
+        results.append(place['place_id'])
+
+    return results
+
+
 @app.route('/', methods=['GET'])
 def home():
     return "Hello, world!"
 
 @app.route('/api/address', methods=['GET'])
-def convert_address():
+def api_address():
     results = []
     status = 'Success'
     statusCode = 200
@@ -31,16 +64,9 @@ def convert_address():
     if 'address' in request.args:
         address = request.args.get('address')
 
-        payload = {
-            'address': address
-        }
+        location = geocoding(address)
 
-        geocoded = request.get(geocodeURL, params=payload)
-
-        geocodedLocation = geocoded.json()['results'][0]['geometry']['location']
-
-        latitude = geocodedLocation['lat']
-        longitude = geocodedLocation['lng']
+        results = listNearby(location)
 
         app.logger.info("Received address request for %s and returned %s results with status %s (%s)", address, len(results), statusCode, status)
     else:
@@ -67,18 +93,7 @@ def api_coordinates():
         
         location = latitude + ',' + longitude
 
-        payload = {
-            'location': location,
-            'rankby': 'distance'
-        }
-
-        if 'type' in request.args:
-            payload['type'] = request.args.get('type')
-
-        listPlaces = requests.get(searchURL, params=payload)
-
-        for place in listPlaces.json()['results']:
-            results.append(place['place_id'])
+        results = listNearby(location)
 
         app.logger.info("Received coordinates request for %s,%s and returned %s results with status %s (%s)", latitude, longitude, len(results), statusCode, status)
     else:
