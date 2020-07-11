@@ -13,5 +13,10 @@ We aim to create an application that allows people to find the best locations to
 * Find a list of grocery stores from the user's (given) location
 * View how busy a location currently is using Google Maps API
 * Use Google Maps API historical data/estimates to tell user if it's better to go later
-* User voting on locations on how well they have safety guildlines implemented
+  -recommendations for less busy times
+* User input on locations on how well they have safety guildlines implemented
+  Safety Guidelines --> including but not limited to:
+  -enforced social distancing
+  -face mask policy
+  -hand sanitizer availiable at storefront
 * Rank the nearby grocery stores based on above data
