@@ -1,0 +1,9 @@
+.header h1 {
+    color: white;
+}
+
+.header {
+    height: 70px;
+    background-color: purple;
+    padding: 10px;
+}
