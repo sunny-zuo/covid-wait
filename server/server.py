@@ -15,10 +15,22 @@ baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + 
 def home():
     return "Hello, world!"
 
-@app.route('/api/places', method=['GET'])
-def places():
-    res = []
-    return jsonify(res)
+@app.route('/api/places', methods=['GET'])
+def api_places():
+    latitude = request.args.get('lat')
+    longitude = request.args.get('long')
+
+    results = []
+    status = ''
+
+    response = {
+        'results': results,
+        'status': status
+    }
+
+    app.logger.info("Received request for %s,%s and returned %s results with status %s", latitude, longitude, len(results), status)
+
+    return jsonify(response), statusCode
 
 app.run()
 
