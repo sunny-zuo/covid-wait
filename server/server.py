@@ -1,15 +1,21 @@
 #!/usr/bin/python
 
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 import flask
 from flask import request, jsonify
-
-import requests
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-apiKey = "AIzaSyCiO1LK78bn5NYUkqytbXrUb-d-dbqPK5o"
-baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
+import requests
+
+apiKey = os.getenv("APIKEY")
+
+searchURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
 
 @app.route('/', methods=['GET'])
 def home():
@@ -57,7 +63,7 @@ def api_coordinates():
         if 'type' in request.args:
             payload['type'] = request.args.get('type')
 
-        listPlaces = requests.get(baseURL, params=payload)
+        listPlaces = requests.get(searchURL, params=payload)
 
         for place in listPlaces.json()['results']:
             results.append(place['place_id'])
