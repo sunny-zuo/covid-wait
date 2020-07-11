@@ -16,29 +16,38 @@ class Home extends React.Component {
     return (
       <div>
         <Layout>
-          <div class="nav">
+        <div className="nav">
             <p>Home</p>
             <p>Check Stores</p>
             <p>Covid Safety Tips</p>
-          </div>
+        </div>
           <div class="Check Stores">
-          <h2>Check Nearby Stores</h2>
           <h3>Find the least crowded, and safest grocery stores (or other place types) in your area. Updated in real time.</h3>
           <form>
-            <input type="text" name="address" aria-label="User Address" placeholder="Enter Your Address"></input>
+            <input type="text" name="address" aria-label="User Address" placeholder="Enter Your Location"></input>
             <br/>
+            <div id="search">
             <label id="findPlaceType">Find:</label>
             <select id="placeType" name="placeType">
               <option value="supermarket">Supermarket</option>
               <option value="drugstore">Drug Store</option>
               <option value="department_store">Department Store</option>
             </select> 
+            <label id="distance">Distance:</label>
+            <select id="distance">
+              <option value="5km">5 km</option>
+              <option value="10km">10 km</option>
+              <option value="20km">20 km</option>
+              <option value="50km">50 km</option>
+            </select>
+            <button onClick={makeRequestAddy}>Go!</button>
+            </div>
           </form>
-          <button onClick={makeRequestAddy}>Go!</button>
-
+        
+          
           <br/>
-          <button onClick={getLocation}>Click here to use your current location</button>
-    </div>
+          <button onClick={getLocation} id="current-location">Click here to use your current location</button>
+        </div>
         </Layout>
       </div>
     )
