@@ -43,11 +43,24 @@ def api_coordinates():
     status = 'Success'
     statusCode = 200
 
-    if 'lat' in request.args and 'long' in request.args:
+    if 'lat' in request.args and 'lng' in request.args:
         latitude = request.args.get('lat')
-        longitude = request.args.get('long')
+        longitude = request.args.get('lng')
+        
+        location = latitude + ',' + longitude
 
-        listPlaces = requests.get(baseURL, params=listPlacesPayload)
+        payload = {
+            'location': location,
+            'rankby': 'distance'
+        }
+
+        if 'type' in request.args:
+            payload['type'] = request.args.get('type')
+
+        listPlaces = requests.get(baseURL, params=payload)
+
+        for place in listPlaces.json()['results']:
+            results.append(place['place_id'])
 
         app.logger.info("Received coordinates request for %s,%s and returned %s results with status %s (%s)", latitude, longitude, len(results), statusCode, status)
     else:
