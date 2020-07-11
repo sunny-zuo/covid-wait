@@ -17,18 +17,26 @@ def home():
 
 @app.route('/api/places', methods=['GET'])
 def api_places():
-    latitude = request.args.get('lat')
-    longitude = request.args.get('long')
 
     results = []
-    status = ''
+    status = 'Success'
+    statusCode = 200
+
+    if 'lat' in request.args and 'long' in request.args:
+        latitude = request.args.get('lat')
+        longitude = request.args.get('long')
+
+        app.logger.info("Received request for %s,%s and returned %s results with status %s (%s)", latitude, longitude, len(results), statusCode, status)
+    else:
+        status = 'Invalid request'
+        statusCode = 201
+
+        app.logger.info("Received invalid request and returned %s results with status %s (%s)", len(results), statusCode, status)
 
     response = {
         'results': results,
         'status': status
     }
-
-    app.logger.info("Received request for %s,%s and returned %s results with status %s", latitude, longitude, len(results), status)
 
     return jsonify(response), statusCode
 
