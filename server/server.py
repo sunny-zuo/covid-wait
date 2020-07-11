@@ -1,28 +1,76 @@
 #!/usr/bin/python
 
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 import flask
 from flask import request, jsonify
 
+app = flask.Flask(__name__)
+
+import flask_cors
+from flask_cors import CORS
+
+CORS(app)
+
 import requests
 
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+apiKey = os.getenv("APIKEY")
 
-apiKey = "AIzaSyCiO1LK78bn5NYUkqytbXrUb-d-dbqPK5o"
-baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
+geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + apiKey
+searchURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
+
+def geocoding(address):
+    payload = {
+        'address': address
+    }
+
+    geocoded = requests.get(geocodeURL, params=payload)
+
+    geocodedLocation = geocoded.json()['results'][0]['geometry']['location']
+
+    latitude = geocodedLocation['lat']
+    longitude = geocodedLocation['lng']
+
+    return str(latitude) + ',' + str(longitude)
+
+def listNearby(location):
+    results = []
+
+    payload = {
+        'location': location,
+        'rankby': 'distance'
+    }
+
+    if 'type' in request.args:
+        payload['type'] = request.args.get('type')
+
+    listPlaces = requests.get(searchURL, params=payload)
+
+    for place in listPlaces.json()['results']:
+        results.append(place['place_id'])
+
+    return results
+
 
 @app.route('/', methods=['GET'])
 def home():
     return "Hello, world!"
 
 @app.route('/api/address', methods=['GET'])
-def convert_address():
+def api_address():
     results = []
     status = 'Success'
     statusCode = 200
 
     if 'address' in request.args:
         address = request.args.get('address')
+
+        location = geocoding(address)
+
+        results = listNearby(location)
 
         app.logger.info("Received address request for %s and returned %s results with status %s (%s)", address, len(results), statusCode, status)
     else:
@@ -49,18 +97,7 @@ def api_coordinates():
         
         location = latitude + ',' + longitude
 
-        payload = {
-            'location': location,
-            'rankby': 'distance'
-        }
-
-        if 'type' in request.args:
-            payload['type'] = request.args.get('type')
-
-        listPlaces = requests.get(baseURL, params=payload)
-
-        for place in listPlaces.json()['results']:
-            results.append(place['place_id'])
+        results = listNearby(location)
 
         app.logger.info("Received coordinates request for %s,%s and returned %s results with status %s (%s)", latitude, longitude, len(results), statusCode, status)
     else:
