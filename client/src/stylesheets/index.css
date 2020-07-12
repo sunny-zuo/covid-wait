@@ -18,9 +18,14 @@ h2 {
 h3 {
     text-align: center;
 }
-a {
+h4 {
+    background-color: grey;
+    padding: 1em 2em;
+    margin: 1em;
+}
+a{
     text-decoration: none;
-    color: darkslategray;
+    color: white;
 }
 button {
     border-radius: 0%;
@@ -63,5 +68,5 @@ input {
     padding: 1em 10em;
     justify-content: center;
     margin: 0 auto;
-    background-color: slateblue;
+    background-color: purple;
 }

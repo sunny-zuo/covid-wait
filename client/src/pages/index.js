@@ -95,7 +95,7 @@ class Home extends React.Component {
           <br />
           <button id="current-location" type="button" onClick={() => this.makeRequestCoords()}>Click here to use your current location</button>
         </div>
-        <h4><Link to="/tips">Learn how to stay safe while shopping</Link></h4>
+        <h4><Link to="/tips">Click here to learn how to stay safe while shopping</Link></h4>
         </Layout>
       </div>
     )
