@@ -19,7 +19,7 @@ class Home extends React.Component {
   }
 
   makeRequestAddy() {
-    fetch(`http://127.0.0.1:5000/api/address?address=${this.state.address}`, {
+    fetch(`http://127.0.0.1:5000/api/address?address=${this.state.address}&type=grocery`, {
       method: 'GET'
     }).then(response => {
       if (response.ok && response.status === 200) {
@@ -41,7 +41,7 @@ class Home extends React.Component {
   makeRequestCoords() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        fetch(`http://127.0.0.1:5000/api/coordinates?lat=${position.coords.latitude}&lng=${position.coords.longitude}`, {
+        fetch(`http://127.0.0.1:5000/api/coordinates?lat=${position.coords.latitude}&lng=${position.coords.longitude}&type=grocery`, {
           method: 'GET'
         }).then(response => {
           if (response.ok && response.status === 200) {
@@ -71,28 +71,28 @@ class Home extends React.Component {
         <div className="Check Stores">
           <h3>Find the least crowded, and safest grocery stores (or other place types) in your area. Updated in real time.</h3>
           <form>
-            <input type="text" name="address" aria-label="User Address" placeholder="Enter Your Location"></input>
-            <br/>
+            <input type="text" name="address" value={this.state.value} onChange={this.handleChange} aria-label="User Address" placeholder="Enter Your Address"></input>
+            <br />
             <div id="search">
-            <label id="findPlaceType">Find:</label>
-            <select id="placeType" name="placeType">
-              <option value="supermarket">Supermarket</option>
-              <option value="drugstore">Drug Store</option>
-              <option value="department_store">Department Store</option>
-            </select> 
-            <label id="distance">Distance:</label>
-            <select id="distance">
-              <option value="5km">5 km</option>
-              <option value="10km">10 km</option>
-              <option value="20km">20 km</option>
-              <option value="50km">50 km</option>
-            </select>
-            <button type="button" onClick={() => this.makeRequestAddy()}>Go!</button>
+              <label htmlFor="findPlaceType">Find:
+                <select id="placeType" name="placeType">
+                  <option value="supermarket">Supermarket</option>
+                  <option value="drugstore">Drug Store</option>
+                  <option value="department_store">Department Store</option>
+                </select>
+              </label>
+              <label htmlFor="distance">Distance:
+                <select id="distance">
+                  <option value="5km">5 km</option>
+                  <option value="10km">10 km</option>
+                  <option value="20km">20 km</option>
+                  <option value="50km">50 km</option>
+                </select>
+              </label>
+              <button type="button" onClick={() => this.makeRequestAddy()}>Go!</button>
             </div>
           </form>
-          
-          
-          <br/>
+          <br />
           <button id="current-location" type="button" onClick={() => this.makeRequestCoords()}>Click here to use your current location</button>
         </div>
         <h2>Tips to Stay Safe While Grocery Shopping</h2>

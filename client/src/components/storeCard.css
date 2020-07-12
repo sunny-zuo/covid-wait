@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open Sans');
+
+.storeList li {
+    height: 130px;
+    width: 900px;
+    max-width: 80%;
+    margin: auto;
+    display: block;
+    padding: 6px 20px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    line-height: normal;
+}
+
+.storeCard h1 {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 24px;
+}
+
+.storeCard h2 {
+    font-family: 'Open-Sane', sans-serif;
+    text-align: left;
+    font-size: 16px;
+    color: grey;
+}
+
+.storeCard h3 {
+    font-family: 'Open-Sane', sans-serif;
+    text-align: left;
+    font-size: 16px;
+}
+
+.openStatus.open {
+    float: right;
+    margin-right: -6px;
+    margin-top: -10px;
+    background-color: green;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 6px;
+}
+
+.openStatus.closed {
+    float: right;
+    margin-right: -6px;
+    margin-top: -10px;
+    background-color: red;
+    padding: 4px 8px;
+    color: black;
+    border-radius: 6px;
+}
