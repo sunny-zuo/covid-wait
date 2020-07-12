@@ -1,6 +1,9 @@
 h2 {
     text-align: center;
 }
+h3 {
+    text-align: center;
+}
 input {
     width: 80%;
     padding: 12px 20px;
@@ -14,6 +17,8 @@ input {
 .nav {
     justify-content: space-around;
     display: flex;
+    margin-top: 1em;
+    font-size: larger;
 }
 #search {
     display: flex;
@@ -21,14 +26,33 @@ input {
     margin: 2%;
 }
 #search select {
-    margin-right: 20%;
+    margin-right: 10%;
 }
 #search label {
     margin-right: 2%;
+    padding: 0.5em 5em;
+}
+#search button {
+    margin-right: 2%;
 }
 #current-location {
-    display: flexbox;
-    text-align: center;
-    padding: 20px;
-    margin: 0, auto;
+    display: flex;
+    align-content: center;
+    padding: 1em 10em;
+    justify-content: center;
+    margin: 0 auto;
+}
+li {
+    line-height: 1.2;
+    width: 20%;
+    display: inline-flex;
+    height: 10em;
+    padding: 3em;
+    justify-content: center;
+}
+.box1{
+    background-color: purple;
+    color: ivory;
+}
+.box2{
 }
