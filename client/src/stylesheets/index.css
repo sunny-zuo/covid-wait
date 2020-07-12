@@ -53,22 +53,3 @@ input {
     justify-content: center;
     margin: 0 auto;
 }
-.tips {
-    padding-top: 70px;
-    padding-top: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-.tip {
-    padding: 10px;
-    flex-basis: 280px;
-    margin: 0 2%;
-  }
-.tip img {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 200px;
-    height: 200px;
-    object-fit: contain;
-  }
