@@ -1,10 +1,19 @@
 import React from "react"
-import "./layout.css"
+import "./storeCard.css"
 
-export default function Layout(props) {
-    return (
-        <div className="storeCard">
-            <h2>{props.storeName}</h2>
-        </div>
-    )
+class StoreCard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="storeCard">
+                <span className={this.props.opening_hours.open_now ? "openStatus open" : "openStatus closed"}>{this.props.opening_hours.open_now ? "Open" : "Closed"}</span>
+                <h1>{this.props.storeName}</h1>
+                <h2>{this.props.vicinity}</h2>
+            </div>
+        )
+    }
 }
+export default StoreCard;
