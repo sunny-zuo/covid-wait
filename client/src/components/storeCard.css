@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open Sans');
 
 .storeList li {
-    height: 160px;
+    height: 130px;
     width: 900px;
     max-width: 80%;
     margin: auto;
@@ -26,9 +26,15 @@
     color: grey;
 }
 
+.storeCard h3 {
+    font-family: 'Open-Sane', sans-serif;
+    text-align: left;
+    font-size: 16px;
+}
+
 .openStatus.open {
     float: right;
-    margin-right: 16px;
+    margin-right: -6px;
     margin-top: -10px;
     background-color: green;
     padding: 4px 8px;
@@ -38,7 +44,7 @@
 
 .openStatus.closed {
     float: right;
-    margin-right: 0px;
+    margin-right: -6px;
     margin-top: -10px;
     background-color: red;
     padding: 4px 8px;
