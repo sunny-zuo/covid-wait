@@ -44,7 +44,7 @@ def listNearby(location, request):
     }
 
     if 'type' in request.args:
-        payload['type'] = request.args.get('type')
+        payload['keyword'] = request.args.get('type')
 
     listPlaces = requests.get(searchURL, params=payload)
 
