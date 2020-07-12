@@ -18,13 +18,15 @@ class Stores extends React.Component {
         let StoreCards = '';
         if (this.state.requestData !== '') {
             StoreCards = this.state.requestData.results.map(element => {
-                 return <StoreCard storeName={element.name} placeID={element.place_id} id={element.place_id} />
+                return <li key={element.place_id}><StoreCard storeName={element.name} placeID={element.place_id} /></li>
             });
         }
         return (
             <Layout>
                 <div className="storeList">
-                    {StoreCards}
+                    <ul>
+                        {StoreCards}
+                    </ul>
                 </div>
             </Layout>
         )
