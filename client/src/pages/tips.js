@@ -23,7 +23,7 @@ export default function Tips() {
                 </div>
                 <div className="tip">
                     <img src="https://images.vexels.com/media/users/3/129291/isolated/preview/82f8093f863fff6a22075343fd295726-bar-graph-infographic-5-by-vexels.png"></img>
-                    <p>Avoid going during peak times</p>
+                    <p>Avoid going during peak times. Use our handy COVID Wait tool to help find the safest times and grocery stores in your area</p>
                 </div>
                 <div className="tip">
                     <img src="https://cdn.pixabay.com/photo/2020/03/21/15/25/social-4954309_960_720.png"></img>
