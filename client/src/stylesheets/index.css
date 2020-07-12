@@ -44,6 +44,7 @@ input {
 }
 #search button {
     margin-right: 2%;
+    padding: 20px 50px;
 }
 #current-location {
     display: flex;
