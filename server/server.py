@@ -7,12 +7,10 @@ load_dotenv()
 
 import flask
 from flask import request, jsonify
-
 app = flask.Flask(__name__)
 
 import flask_cors
 from flask_cors import CORS
-
 CORS(app)
 
 import requests
@@ -36,7 +34,7 @@ def geocoding(address):
 
     return str(latitude) + ',' + str(longitude)
 
-def listNearby(location):
+def listNearby(location, request):
     payload = {
         'location': location,
         'rankby': 'distance'
@@ -65,7 +63,7 @@ def api_address():
 
         location = geocoding(address)
 
-        results = listNearby(location)
+        results = listNearby(location, request)
 
         app.logger.info("Received address request for %s and returned %s results with status %s (%s)", address, len(results), statusCode, status)
     else:
@@ -92,7 +90,7 @@ def api_coordinates():
         
         location = latitude + ',' + longitude
 
-        results = listNearby(location)
+        results = listNearby(location, request)
 
         app.logger.info("Received coordinates request for %s,%s and returned %s results with status %s (%s)", latitude, longitude, len(results), statusCode, status)
     else:
