@@ -29,13 +29,10 @@
     text-align: left;
     font-size: 16px;
     color: grey;
+    padding: 0;
+    background-color: white;
+    margin: 0;
 }
-
-/*.storeCard h3 {
-    font-family: 'Open Sans', sans-serif;
-    text-align: left;
-    font-size: 16px;
-}*/
 
 .openStatus.open {
     font-family: 'Roboto', sans-serif;
@@ -46,6 +43,7 @@
     padding: 4px 8px;
     color: white;
     border-radius: 6px;
+    font-size: 16px;
 }
 
 .openStatus.closed {
@@ -57,6 +55,7 @@
     padding: 4px 8px;
     color: white;
     border-radius: 6px;
+    font-size: 16px;
 }
 
 .crowdedRating {
@@ -66,7 +65,7 @@
     border-radius: 10px;
     color: white;
     width: 48px;
-    margin-top: 0px;
+    margin-top: 8px;
     margin-bottom: 8px;
     background-color: grey;
 }
