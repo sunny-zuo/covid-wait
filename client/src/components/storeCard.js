@@ -22,12 +22,29 @@ class StoreCard extends React.Component {
     }
 
     render() {
+        let busyClass = "crowdedRating";
+        if (this.state.busy) {
+            if (this.state.busy > 80) {
+                busyClass += " darkred"
+            } else if (this.state.busy > 65) {
+                busyClass += " red"
+            } else if (this.state.busy > 45) {
+                busyClass += " orange"
+            } else if (this.state.busy > 30) {
+                busyClass += " yellow"
+            } else {
+                busyClass += " green"
+            }
+        } else {
+            busyClass += " grey"
+        }
+
         return (
             <div className="storeCard">
                 <span className={this.props.opening_hours.open_now ? "openStatus open" : "openStatus closed"}>{this.props.opening_hours.open_now ? "Open" : "Closed"}</span>
                 <h1>{this.props.storeName}</h1>
                 <h2>{this.props.vicinity}</h2>
-                <h3>Crowdedness Rating: {this.state.busy}</h3>
+                <h3 className={busyClass}>{(this.state.busy) ? this.state.busy : "N/A"}</h3>
             </div>
         )
     }
