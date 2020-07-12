@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/Layout"
 import "../stylesheets/index.css"
+import { navigate } from "gatsby";
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,6 +29,9 @@ class Home extends React.Component {
       }
     }).then(data => {
       console.log(data);
+      navigate("/stores/", {
+        state: { requestData: data}
+      });
     }).catch(error => {
       console.log(error);
       this.setState({error: error});
@@ -47,6 +51,9 @@ class Home extends React.Component {
           }
         }).then(data => {
           console.log(data);
+          navigate("/stores/", {
+            state: { requestData: data }
+          });
         }).catch(error => {
           console.log(error);
           this.setState({ error: error });
