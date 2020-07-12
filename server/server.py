@@ -37,8 +37,6 @@ def geocoding(address):
     return str(latitude) + ',' + str(longitude)
 
 def listNearby(location):
-    results = []
-
     payload = {
         'location': location,
         'rankby': 'distance'
@@ -49,10 +47,7 @@ def listNearby(location):
 
     listPlaces = requests.get(searchURL, params=payload)
 
-    for place in listPlaces.json()['results']:
-        results.append(place['place_id'])
-
-    return results
+    return listPlaces.json()['results']
 
 
 @app.route('/', methods=['GET'])
