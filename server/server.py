@@ -16,12 +16,15 @@ CORS(app)
 
 import requests
 
+from requests_futures.sessions import FuturesSession
+
 import populartimes
 
 apiKey = os.getenv("APIKEY")
 
 geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + apiKey
 searchURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey
+photoURL = "https://maps.googleapis.com/maps/api/place/photo?key=" + apiKey
 
 def geocoding(address):
     payload = {
@@ -46,10 +49,22 @@ def listNearby(location, request):
     if 'type' in request.args:
         payload['keyword'] = request.args.get('type')
 
-    listPlaces = requests.get(searchURL, params=payload)
+    listPlaces = requests.get(searchURL, params=payload).json()
 
-    return listPlaces.json()['results']
+    session = FuturesSession()
+    futureImages = []
 
+    for place in listPlaces['results']:
+        if 'photos' in place:
+            reference = place['photos'][0]['photo_reference']
+            futureImages.append(session.get(photoURL + '&photoreference=' + reference + '&maxheight=64'))
+
+    for place in listPlaces['results']:
+        if 'photos' in place:
+            place['image'] = futureImages[0].result().url
+            futureImages.pop(0)
+
+    return listPlaces['results']
 
 @app.route('/', methods=['GET'])
 def home():
@@ -69,6 +84,7 @@ def api_address():
         results = listNearby(location, request)
 
         app.logger.info("Received address request for %s and returned %s results with status %s (%s)", address, len(results), statusCode, status)
+
     else:
         app.logger.info("Received invalid address request and returned %s results with status %s (%s)", len(results), statusCode, status)
         status = 'Invalid request'
@@ -96,6 +112,7 @@ def api_coordinates():
         results = listNearby(location, request)
 
         app.logger.info("Received coordinates request for %s,%s and returned %s results with status %s (%s)", latitude, longitude, len(results), statusCode, status)
+
     else:
         status = 'Invalid request'
         statusCode = 400
@@ -111,7 +128,7 @@ def api_coordinates():
 
 @app.route('/api/popularity', methods=['GET'])
 def api_popularity():
-    result = ''
+    result = None
     status = 'Success'
     statusCode = 200
 
@@ -119,6 +136,7 @@ def api_popularity():
         result = populartimes.get_id(apiKey, request.args.get('place_id'))
 
         app.logger.info("Received popularity request and returned status %s (%s)", statusCode, status)
+
     else:
         status = 'Invalid request'
         statusCode = 400
