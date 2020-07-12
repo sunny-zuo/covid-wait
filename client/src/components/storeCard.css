@@ -34,6 +34,16 @@
     margin: 0;
 }
 
+.storeCard h4 {
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    font-size: 16px;
+    color: black;
+    padding: 0;
+    background-color: white;
+    margin: 0;
+}
+
 .storeCard img {
     float: left;
     margin-left: -4px;
