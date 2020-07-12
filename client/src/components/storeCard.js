@@ -5,7 +5,8 @@ class StoreCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            busy: ''
+            busy: '',
+            historical: ''
         }
     }
 
@@ -15,7 +16,7 @@ class StoreCard extends React.Component {
         }).then(response => response.json())
         .then(data => {
             console.log(data);
-            this.setState({busy: data.result?.current_popularity});
+            this.setState({ busy: data.result?.current_popularity, historical: data.result?.populartimes });
         }).catch(error => {
             this.setState({busy: 'Error getting data'});
         })
@@ -39,7 +40,18 @@ class StoreCard extends React.Component {
             busyClass += " grey"
         }
 
-        console.log(this.props.image);
+        let historicalInfo = ""
+        if (this.state.historical) {
+            const date = new Date();
+            let day = date.getDay() - 1;
+            if (day === -1) { day = 6 };
+            console.log(this.state.historical[day].data[date.getHours() + 1]);
+            if (this.state.historical) {
+                historicalInfo = `Next Hour Estimate: ${this.state.historical[day].data[date.getHours() + 1]}`
+            }
+        } else {
+            historicalInfo = 'No Estimate Available'
+        }
 
         return (
             <div className="storeCard">
@@ -47,6 +59,8 @@ class StoreCard extends React.Component {
                 <span className={this.props.opening_hours.open_now ? "openStatus open" : "openStatus closed"}>{this.props.opening_hours.open_now ? "Open" : "Closed"}</span>
                 <h1>{this.props.storeName}</h1>
                 <h2>{this.props.vicinity}</h2>
+                <br/>
+                <h4>{historicalInfo}</h4>
                 <h3 className={busyClass}>{(this.state.busy) ? this.state.busy : "N/A"}</h3>
             </div>
         )

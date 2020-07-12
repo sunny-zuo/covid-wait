@@ -3,8 +3,10 @@
 .header h1 {
     color: white;
     font-size: 36px;
-    margin-top: 12px;
+    margin-top: 3em;
+    padding: 1em;
     font-family: 'Roboto', sans-serif;
+    background-color: green;
 }
 
 .header a {
@@ -12,7 +14,7 @@
 }
 
 .header {
-    height: 70px;
-    background-color: purple;
+    height: 15em;
+    background-image: url("https://3u28iz2ujc8a178j1f2ql9ic-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/186/img04-2x-1330x680-c.jpg");
     padding: 10px;
 }

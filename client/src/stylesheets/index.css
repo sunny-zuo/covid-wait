@@ -18,6 +18,22 @@ h2 {
 h3 {
     text-align: center;
 }
+h4 {
+    background-color: grey;
+    padding: 1em 2em;
+    margin: 1em;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+button {
+    border-radius: 0%;
+    border: none;
+    background-color: darkorange;
+    color: white;
+    font-weight: bold;
+}
 input {
     width: 80%;
     padding: 12px 20px;
@@ -52,4 +68,5 @@ input {
     padding: 1em 10em;
     justify-content: center;
     margin: 0 auto;
+    background-color: purple;
 }

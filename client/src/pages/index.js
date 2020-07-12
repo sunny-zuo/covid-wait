@@ -70,7 +70,6 @@ class Home extends React.Component {
         <Layout>
         <div className="Check Stores">
           <h3>Find the least crowded, and safest grocery stores (or other place types) in your area. Updated in realtime.</h3>
-          <h4><Link to="/tips">Learn how to stay safe while shopping</Link></h4>
           <form>
             <input type="text" name="address" value={this.state.value} onChange={this.handleChange} aria-label="User Address" placeholder="Enter Your Address"></input>
             <br />
@@ -96,6 +95,7 @@ class Home extends React.Component {
           <br />
           <button id="current-location" type="button" onClick={() => this.makeRequestCoords()}>Click here to use your current location</button>
         </div>
+        <h4><Link to="/tips">Click here to learn how to stay safe while shopping</Link></h4>
         </Layout>
       </div>
     )
