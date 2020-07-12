@@ -57,7 +57,12 @@ def listNearby(location, request):
     for place in listPlaces['results']:
         if 'photos' in place:
             reference = place['photos'][0]['photo_reference']
-            futureImages.append(session.get(photoURL + '&photoreference=' + reference + '&maxheight=64'))
+            imagesPayload = {
+                'photoreference': reference,
+                'maxheight': 64
+            }
+
+            futureImages.append(session.get(photoURL, params=imagesPayload))
 
     for place in listPlaces['results']:
         if 'photos' in place:
