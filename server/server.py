@@ -59,7 +59,7 @@ def listNearby(location, request):
             reference = place['photos'][0]['photo_reference']
             imagesPayload = {
                 'photoreference': reference,
-                'maxheight': 64
+                'maxheight': 128
             }
 
             futureImages.append(session.get(photoURL, params=imagesPayload))
