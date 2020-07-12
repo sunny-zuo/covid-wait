@@ -51,7 +51,7 @@ def listNearby(location, request):
 
     listPlaces = requests.get(searchURL, params=payload).json()
 
-    session = FuturesSession()
+    session = FuturesSession(max_workers=20)
     futureImages = []
 
     for place in listPlaces['results']:
