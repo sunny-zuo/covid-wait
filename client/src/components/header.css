@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .header h1 {
     color: white;
+    font-size: 36px;
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header a {
+    text-decoration: none;
 }
 
 .header {

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open Sans');
+
+.storeList ul {
+    padding: 0;
+}
+
+.storeList li {
+    min-height: 130px;
+    height: 100%;
+    width: 900px;
+    max-width: 80%;
+    margin: auto;
+    display: block;
+    padding: 6px 20px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    line-height: normal;
+}
+
+.storeCard h1 {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 24px;
+}
+
+.storeCard h2 {
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    font-size: 16px;
+    color: grey;
+    padding: 0;
+    background-color: white;
+    margin: 0;
+}
+
+.storeCard img {
+    float: left;
+    margin-right: 18px;
+    margin-top: -16px;
+}
+
+.openStatus.open {
+    font-family: 'Roboto', sans-serif;
+    float: right;
+    margin-right: -6px;
+    margin-top: -10px;
+    background-color: green;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.openStatus.closed {
+    font-family: 'Roboto', sans-serif;
+    float: right;
+    margin-right: -6px;
+    margin-top: -10px;
+    background-color: #8B0000;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.crowdedRating {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    padding: 8px;
+    border-radius: 10px;
+    color: white;
+    width: 48px;
+    margin-top: -2px;
+    margin-bottom: 12px;
+    background-color: grey;
+    position: absolute;
+}
+
+.crowdedRating.green {
+    background-color: green;
+}
+
+.crowdedRating.darkred {
+    background-color: #8B0000;
+}
+
+.crowdedRating.red {
+    background-color: #FF0000;
+}
+
+.crowdedRating.orange {
+    color: black;
+    background-color: #FFA500;
+}
+
+.crowdedRating.yellow {
+    color: black;
+    background-color: #FFD700;
+}

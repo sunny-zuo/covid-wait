@@ -1,5 +1,19 @@
+body {
+    margin: 0;
+    color: black;
+    background-color: white;
+    font-size: 22px;
+    text-align: center;
+  }
+
+
 h2 {
     text-align: center;
+    max-width: 80%;
+    color: white;
+    background-color: purple;
+    padding: 2em 3em;
+    margin: 1em 5em;
 }
 h3 {
     text-align: center;
@@ -14,26 +28,23 @@ input {
     border-right: none;
     border-left: none;
 }
-.nav {
-    justify-content: space-around;
-    display: flex;
-    margin-top: 1em;
-    font-size: larger;
-}
+
 #search {
     display: flex;
     justify-content: center;
-    margin: 2%;
+    margin: 1%;
+    flex-wrap: wrap;
 }
 #search select {
-    margin-right: 10%;
+    margin-right: 5%;
 }
 #search label {
-    margin-right: 2%;
-    padding: 0.5em 5em;
+    margin-right: 1%;
+    padding: 1% 5%;
 }
 #search button {
     margin-right: 2%;
+    padding: 20px 50px;
 }
 #current-location {
     display: flex;
@@ -41,18 +52,4 @@ input {
     padding: 1em 10em;
     justify-content: center;
     margin: 0 auto;
-}
-li {
-    line-height: 1.2;
-    width: 20%;
-    display: inline-flex;
-    height: 10em;
-    padding: 3em;
-    justify-content: center;
-}
-.box1{
-    background-color: purple;
-    color: ivory;
-}
-.box2{
 }
