@@ -60,12 +60,11 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <a id="top"></a>
         <Layout>
         <div className="nav">
-            <a href="#top">Home</a>
-            <a href="#search">Check Stores</a>
-            <a href="#tips">Covid Safety Tips</a>
+            <p><a href="#top">Home</a></p>
+            <p><a href="#search">Check Stores</a></p>
+            <p><a href="#tips">Covid Safety Tips</a></p>
         </div>
           <div className="Check Stores">
           <h3>Find the least crowded, and safest grocery stores (or other place types) in your area. Updated in real time.</h3>
