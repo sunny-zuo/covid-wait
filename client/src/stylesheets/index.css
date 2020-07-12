@@ -1,0 +1,58 @@
+h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 10%;
+    text-align: center;
+    justify-content: center;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.nav {
+    justify-content: space-around;
+    display: flex;
+    margin-top: 1em;
+    font-size: larger;
+}
+#search {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+#search select {
+    margin-right: 10%;
+}
+#search label {
+    margin-right: 2%;
+    padding: 0.5em 5em;
+}
+#search button {
+    margin-right: 2%;
+}
+#current-location {
+    display: flex;
+    align-content: center;
+    padding: 1em 10em;
+    justify-content: center;
+    margin: 0 auto;
+}
+li {
+    line-height: 1.2;
+    width: 20%;
+    display: inline-flex;
+    height: 10em;
+    padding: 3em;
+    justify-content: center;
+}
+.box1{
+    background-color: purple;
+    color: ivory;
+}
+.box2{
+}
