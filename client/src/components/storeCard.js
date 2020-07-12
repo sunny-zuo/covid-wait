@@ -49,6 +49,8 @@ class StoreCard extends React.Component {
             if (this.state.historical) {
                 historicalInfo = `Next Hour Estimate: ${this.state.historical[day].data[date.getHours() + 1]}`
             }
+        } else {
+            historicalInfo = 'No Estimate Available'
         }
 
         return (
