@@ -1,4 +1,4 @@
-# Covid Wait (I can't think of a better name)
+# Covid Wait
 
 ## Problem
 
@@ -18,5 +18,5 @@ We aim to create an application that allows people to find the best locations to
   Safety Guidelines --> including but not limited to:
   -enforced social distancing
   -face mask policy
-  -hand sanitizer availiable at storefront
+  -hand sanitizer availiable at storefront (incomplete)
 * Rank the nearby grocery stores based on above data
