@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/Layout"
 import "../stylesheets/index.css"
+import { navigate } from "gatsby";
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,6 +29,9 @@ class Home extends React.Component {
       }
     }).then(data => {
       console.log(data);
+      navigate("/stores/", {
+        state: { requestData: data}
+      });
     }).catch(error => {
       console.log(error);
       this.setState({error: error});
@@ -47,6 +51,9 @@ class Home extends React.Component {
           }
         }).then(data => {
           console.log(data);
+          navigate("/stores/", {
+            state: { requestData: data }
+          });
         }).catch(error => {
           console.log(error);
           this.setState({ error: error });
@@ -120,19 +127,21 @@ class Home extends React.Component {
               <input type="text" name="address" value={this.state.value} onChange={this.handleChange} aria-label="User Address" placeholder="Enter Your Address"></input>
               <br />
               <div id="search">
-                <label id="findPlaceType">Find:</label>
+                <label htmlFor="findPlaceType">Find:
                 <select id="placeType" name="placeType">
-                  <option value="supermarket">Supermarket</option>
-                  <option value="drugstore">Drug Store</option>
-                  <option value="department_store">Department Store</option>
-                </select>
-                <label id="distance">Distance:</label>
+                    <option value="supermarket">Supermarket</option>
+                    <option value="drugstore">Drug Store</option>
+                    <option value="department_store">Department Store</option>
+                  </select>
+                </label>
+                <label htmlFor="distance">Distance:
                 <select id="distance">
-                  <option value="5km">5 km</option>
-                  <option value="10km">10 km</option>
-                  <option value="20km">20 km</option>
-                  <option value="50km">50 km</option>
-                </select>
+                    <option value="5km">5 km</option>
+                    <option value="10km">10 km</option>
+                    <option value="20km">20 km</option>
+                    <option value="50km">50 km</option>
+                  </select>
+                </label>
                 <button type="button" onClick={() => this.makeRequestAddy()}>Go!</button>
               </div>
             </form>
