@@ -34,6 +34,12 @@
     margin: 0;
 }
 
+.storeCard img {
+    float: left;
+    margin-right: 18px;
+    margin-top: -16px;
+}
+
 .openStatus.open {
     font-family: 'Roboto', sans-serif;
     float: right;
@@ -65,9 +71,10 @@
     border-radius: 10px;
     color: white;
     width: 48px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: -2px;
+    margin-bottom: 12px;
     background-color: grey;
+    position: absolute;
 }
 
 .crowdedRating.green {

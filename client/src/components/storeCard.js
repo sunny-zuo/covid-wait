@@ -39,8 +39,11 @@ class StoreCard extends React.Component {
             busyClass += " grey"
         }
 
+        console.log(this.props.image);
+
         return (
             <div className="storeCard">
+                <img src={this.props.image} />
                 <span className={this.props.opening_hours.open_now ? "openStatus open" : "openStatus closed"}>{this.props.opening_hours.open_now ? "Open" : "Closed"}</span>
                 <h1>{this.props.storeName}</h1>
                 <h2>{this.props.vicinity}</h2>
