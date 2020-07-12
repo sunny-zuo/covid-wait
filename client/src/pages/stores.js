@@ -16,7 +16,7 @@ class Stores extends React.Component {
 
     render() {
         let StoreCards = '';
-        if (this.state.requestData != '') {
+        if (this.state.requestData !== '') {
             StoreCards = this.state.requestData.results.map(element => {
                  return <StoreCard storeName={element.name} placeID={element.place_id} id={element.place_id} />
             });
