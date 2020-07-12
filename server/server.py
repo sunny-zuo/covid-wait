@@ -8,12 +8,15 @@ load_dotenv()
 import flask
 from flask import request, jsonify
 app = flask.Flask(__name__)
+app.config['DEBUG'] = True
 
 import flask_cors
 from flask_cors import CORS
 CORS(app)
 
 import requests
+
+import populartimes
 
 apiKey = os.getenv("APIKEY")
 
@@ -101,6 +104,29 @@ def api_coordinates():
 
     response = {
         'results': results,
+        'status': status
+    }
+
+    return jsonify(response), statusCode
+
+@app.route('/api/popularity', methods=['GET'])
+def api_popularity():
+    result = ''
+    status = 'Success'
+    statusCode = 200
+
+    if 'place_id' in request.args:
+        result = populartimes.get_id(apiKey, request.args.get('place_id'))
+
+        app.logger.info("Received popularity request and returned status %s (%s)", statusCode, status)
+    else:
+        status = 'Invalid request'
+        statusCode = 400
+
+        app.logger.info("Received invalid popularity request and returned status %s (%s)", statusCode, status)
+
+    response = {
+        'result': result,
         'status': status
     }
 
