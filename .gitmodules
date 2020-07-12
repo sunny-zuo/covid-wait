@@ -1,0 +1,3 @@
+[submodule "server/populartimes"]
+	path = server/populartimes
+	url = git@github.com:m-wrzr/populartimes.git
