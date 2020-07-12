@@ -36,8 +36,12 @@
 
 .storeCard img {
     float: left;
+    margin-left: -4px;
     margin-right: 18px;
     margin-top: -16px;
+    background-size: cover;
+    width: 160px;
+    height: 128px;
 }
 
 .openStatus.open {
@@ -97,4 +101,15 @@
 .crowdedRating.yellow {
     color: black;
     background-color: #FFD700;
+}
+
+@media only screen and (max-width: 600px) {
+    .crowdedRating {
+        position: relative;
+        margin-top: 10px;
+    }
+    .storeCard img {
+        width: 0px;
+        height: 0px;
+    }
 }
